@@ -90,7 +90,7 @@ void autonomous() {
 		botLeft.move_velocity(25);
 		botRight.move_velocity(25);
 
-		while (distRead < 150)
+		while (distRead < 200)
 		{
 			topRight.move_velocity(0);
 			topLeft.move_velocity(0);
