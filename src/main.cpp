@@ -3,6 +3,9 @@
 #include <vector>
 #include <math.h>
 
+//SENSORS
+pros::Distance dist(5);
+
 //MISC MOTORS
 pros::Motor topBelt(3, true);
 pros::Motor bottomBelt(4, true);
@@ -18,6 +21,9 @@ pros::Motor botLeft(17, true);
 //WHEEL MOTOR GROUPS
 pros::Motor_Group left({10, 17});
 pros::Motor_Group right({15, 13});
+
+
+int distRead;
 
 /**
  * A callback function for LLEMU's center button.
@@ -80,27 +86,31 @@ void competition_initialize() {}
 
 void autonomous() {
 
-	topLeft.tare_position();
-	topRight.tare_position();
-	botLeft.tare_position();
-	botRight.tare_position();
 
-	topLeft.move_velocity(50);
-	topRight.move_velocity(50);
-	botLeft.move_velocity(-50);
-	botRight.move_velocity(-50);
-	pros::delay(1000);
-	topLeft.move_velocity(0);
-	topRight.move_velocity(0);
-	botLeft.move_velocity(0);
-	botRight.move_velocity(0);
-	pros::delay(1000);
-	topLeft.move_velocity(-50);
-	topRight.move_velocity(50);
-	botLeft.move_velocity(-50);
-	botRight.move_velocity(50);
-	pros::delay(1000);
-	
+	while (true)
+	{
+		dist.get();
+		distRead = dist.get();
+
+		topRight.move_velocity(25);
+		topLeft.move_velocity(25);
+		botLeft.move_velocity(25);
+		botRight.move_velocity(25);
+
+		while (distRead < 150)
+		{
+			topRight.move_velocity(0);
+			topLeft.move_velocity(0);
+			botLeft.move_velocity(0);
+			botRight.move_velocity(0);
+			pros::delay(1001);
+
+			topRight.move_velocity(-25);
+			topLeft.move_velocity(25);
+			botLeft.move_velocity(25);
+			botRight.move_velocity(25);
+		}
+	}
 }
 
 /**
@@ -128,7 +138,6 @@ void opcontrol()
 
 	int ymotion;
 	int xmotion;
-	int zmotion;
 
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::Motor left_mtr(1);
