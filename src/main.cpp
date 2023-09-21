@@ -100,7 +100,7 @@ void autonomous() {
 
 			topRight.move_velocity(-25);
 			topLeft.move_velocity(25);
-			botLeft.move_velocity(25);
+			botLeft.move_velocity(-25);
 			botRight.move_velocity(25);
 		}
 	}
