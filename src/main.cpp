@@ -7,8 +7,7 @@
 pros::Distance dist(18);
 
 pros::Vision vision(1);
-pros::vision_signature_s_t GREENTRIBALL = pros::Vision::signature_from_utility(1, -6157, -4985, -5571, -5957, -4737, -5347, 7.600, 0);
-vision.set_signature(1, &sig);
+
 
 //WHEEL MOTOR PORTS
 pros::Motor topRight(13, true);
@@ -84,30 +83,18 @@ void competition_initialize() {}
  */
 
 void autonomous() {
+	pros::vision_signature_s_t sig = pros::Vision::signature_from_utility(1, -6157, -4985, -5571, -5957, -4737, -5347, 7.600, 0);
+	vision.set_signature(1, &sig); // Pointer to these values
 
+	while (true) {
+		pros::vision_object_s_t obj = vision.get_by_sig(0, 1);
 
-	while (true)
-	{
-		dist.get();
-		distRead = dist.get();
+		if (obj.signature == 1) {
+			pros::lcd::set_text(1, "Level 10 GYATT!");
+		}
 
-		topRight.move_velocity(25);
-		topLeft.move_velocity(25);
-		botLeft.move_velocity(25);
-		botRight.move_velocity(25);
-
-		while (distRead < 200)
-		{
-			topRight.move_velocity(0);
-			topLeft.move_velocity(0);
-			botLeft.move_velocity(0);
-			botRight.move_velocity(0);
-			pros::delay(1001);
-
-			topRight.move_velocity(-25);
-			topLeft.move_velocity(25);
-			botLeft.move_velocity(-25);
-			botRight.move_velocity(25);
+		else {
+			pros::lcd::set_text(1, "What da hell!");
 		}
 	}
 }
