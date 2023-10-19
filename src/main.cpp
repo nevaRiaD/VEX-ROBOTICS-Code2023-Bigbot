@@ -6,6 +6,10 @@
 //SENSORS
 pros::Distance dist(18);
 
+pros::Vision vision(1);
+pros::vision_signature_s_t GREENTRIBALL = pros::Vision::signature_from_utility(1, -6157, -4985, -5571, -5957, -4737, -5347, 7.600, 0);
+vision.set_signature(1, &sig);
+
 //WHEEL MOTOR PORTS
 pros::Motor topRight(13, true);
 pros::Motor topLeft(10, false);
