@@ -12,6 +12,8 @@ pros::Motor topLeft(10, false);
 pros::Motor botRight(2, false);
 pros::Motor botLeft(8, true);
 
+pros::Vision Vision(7);
+
 //WHEEL MOTOR GROUPS
 pros::Motor_Group left({10, 17});
 pros::Motor_Group right({15, 13});
