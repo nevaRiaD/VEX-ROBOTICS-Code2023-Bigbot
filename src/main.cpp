@@ -5,9 +5,7 @@
 
 //SENSORS
 pros::Distance dist(20);
-
 pros::Vision vision(20);
-
 
 //WHEEL MOTOR PORTS
 pros::Motor topRight(3, true);
