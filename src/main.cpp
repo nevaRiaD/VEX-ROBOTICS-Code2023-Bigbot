@@ -4,18 +4,16 @@
 #include <math.h>
 
 //SENSORS
-pros::Distance dist(18);
+pros::Distance dist(20);
 
-pros::Vision vision(1);
+pros::Vision vision(20);
 
 
 //WHEEL MOTOR PORTS
-pros::Motor topRight(13, true);
-pros::Motor topLeft(10, false);
-pros::Motor botRight(2, false);
-pros::Motor botLeft(8, true);
-
-pros::Vision Vision(7);
+pros::Motor topRight(3, true);
+pros::Motor topLeft(17, false);
+pros::Motor botRight(1, false);
+pros::Motor botLeft(10, true);
 
 //WHEEL MOTOR GROUPS
 pros::Motor_Group left({10, 17});
