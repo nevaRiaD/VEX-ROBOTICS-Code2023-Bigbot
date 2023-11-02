@@ -1,0 +1,21 @@
+PID
+
+void PID(setpoint)
+{
+    while(setpoint)
+    {
+        error = setpoint - point_we_want;
+        integral = integral + error;
+        power = error*KP + integral*KI;
+        delay;
+    }
+}
+
+calculating distance when reaching pole
+# time subtracted from the total time when factoring in distance and climbing
+
+total_time = 60;
+pole_time = 7;
+distance_time = ;
+
+total_time = total_time - (pole_time + distance_time);
