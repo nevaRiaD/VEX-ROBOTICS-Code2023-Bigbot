@@ -63,8 +63,6 @@ void disabled() {}
 
 void PID()
 {
-	error = setpoint - sensor value
-
 }
 
 /**
