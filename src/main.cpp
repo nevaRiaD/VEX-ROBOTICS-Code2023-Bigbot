@@ -18,6 +18,11 @@ pros::Motor_Group left({10, 17});
 pros::Motor_Group right({15, 13});
 
 int distRead;
+int total_time = 60;
+int pole_time;
+int distance_time;
+double setpoint;
+int error;
 
 /**
  * A callback function for LLEMU's center button.
@@ -53,7 +58,14 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
+
 void disabled() {}
+
+void PID()
+{
+	error = setpoint - sensor value
+
+}
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -79,20 +91,7 @@ void competition_initialize() {}
  */
 
 void autonomous() {
-	pros::vision_signature_s_t sig = pros::Vision::signature_from_utility(1, -6157, -4985, -5571, -5957, -4737, -5347, 7.600, 0);
-	vision.set_signature(1, &sig); // Pointer to these values
 
-	while (true) {
-		pros::vision_object_s_t obj = vision.get_by_sig(0, 1);
-
-		if (obj.signature == 1) {
-			pros::lcd::set_text(1, "Level 10 GYATT!");
-		}
-
-		else {
-			pros::lcd::set_text(1, "What da hell!");
-		}
-	}
 }
 
 /**
